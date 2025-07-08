@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const feedbackDisplay = document.getElementById("feedback-display");
   const charCount = document.getElementById("char-count");
 
-  // Tooltips
+  
   const tooltips = {
     username: document.getElementById("username-tooltip"),
     email: document.getElementById("email-tooltip"),
     comments: document.getElementById("comments-tooltip"),
   };
 
-  // Event delegation for input fields
+  
   form.addEventListener("mouseover", (e) => {
     if (e.target.id in tooltips) {
       tooltips[e.target.id].style.display = "inline";
@@ -24,13 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Character count
+  
   const commentsField = document.getElementById("comments");
   commentsField.addEventListener("input", () => {
     charCount.textContent = `Characters: ${commentsField.value.length}`;
   });
 
-  // Form submission
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -38,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.getElementById("email").value.trim();
     const comments = commentsField.value.trim();
 
-    // Clear previous error messages
+  
     form.querySelectorAll(".error").forEach(el => el.remove());
 
     let hasError = false;
@@ -79,13 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
     el.parentElement.appendChild(error);
   }
 
-  // Prevent background clicks from triggering form-related events
+  
   document.body.addEventListener("click", () => {
-    // Potential background event
+ 
     console.log("Background clicked");
   });
 
   form.addEventListener("click", function (e) {
-    e.stopPropagation(); // Stop event from bubbling to body
+    e.stopPropagation(); 
   });
 });
